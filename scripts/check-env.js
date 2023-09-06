@@ -19,7 +19,7 @@ function checkMissing(vars) {
 }
 
 if (!process.env.SKIP_DB_CHECK && !process.env.DATABASE_TYPE) {
-  checkMissing(['DATABASE_URL']);
+  checkMissing(['POSTGRESQL_ADDON_URI']);
 }
 
 if (process.env.CLICKHOUSE_URL) {

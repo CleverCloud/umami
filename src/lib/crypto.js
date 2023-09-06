@@ -3,7 +3,7 @@ import { hash } from 'next-basics';
 import { v4, v5, validate } from 'uuid';
 
 export function secret() {
-  return hash(process.env.APP_SECRET || process.env.DATABASE_URL);
+  return hash(process.env.APP_SECRET || process.env.POSTGRESQL_ADDON_URI);
 }
 
 export function salt() {

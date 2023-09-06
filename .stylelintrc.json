@@ -13,5 +13,5 @@
       }
     ]
   },
-  "ignoreFiles": ["**/*.js", "**/*.md"]
+  "ignoreFiles": ["**/*.js", "**/*.md", ".next/*"]
 }

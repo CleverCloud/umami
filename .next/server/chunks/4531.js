@@ -480,7 +480,7 @@ uuid__WEBPACK_IMPORTED_MODULE_2__ = (__webpack_async_dependencies__.then ? (awai
 
 
 function secret() {
-    return (0,next_basics__WEBPACK_IMPORTED_MODULE_1__.hash)(process.env.APP_SECRET || process.env.DATABASE_URL);
+    return (0,next_basics__WEBPACK_IMPORTED_MODULE_1__.hash)(process.env.APP_SECRET || process.env.POSTGRESQL_ADDON_URI);
 }
 function salt() {
     const ROTATING_SALT = hash(startOfMonth(new Date()).toUTCString());
@@ -1239,7 +1239,7 @@ const KAFKA_PRODUCER = "kafka-producer";
 BigInt.prototype.toJSON = function() {
     return Number(this);
 };
-function getDatabaseType(url = process.env.DATABASE_URL) {
+function getDatabaseType(url = process.env.POSTGRESQL_ADDON_URI) {
     const type = url && url.split(":")[0];
     if (type === "postgres") {
         return POSTGRESQL;
@@ -1247,7 +1247,7 @@ function getDatabaseType(url = process.env.DATABASE_URL) {
     return type;
 }
 async function runQuery(queries) {
-    const db = getDatabaseType(process.env.CLICKHOUSE_URL || process.env.DATABASE_URL);
+    const db = getDatabaseType(process.env.CLICKHOUSE_URL || process.env.POSTGRESQL_ADDON_URI);
     if (db === POSTGRESQL || db === MYSQL) {
         return queries[PRISMA]();
     }
@@ -1709,7 +1709,7 @@ const POSTGRESQL_DATE_FORMATS = {
     year: "YYYY-01-01"
 };
 function getAddMinutesQuery(field, minutes) {
-    const db = (0,lib_db__WEBPACK_IMPORTED_MODULE_2__/* .getDatabaseType */ .Tk)(process.env.DATABASE_URL);
+    const db = (0,lib_db__WEBPACK_IMPORTED_MODULE_2__/* .getDatabaseType */ .Tk)(process.env.POSTGRESQL_ADDON_URI);
     if (db === lib_db__WEBPACK_IMPORTED_MODULE_2__/* .POSTGRESQL */ .PQ) {
         return `${field} + interval '${minutes} minute'`;
     }
@@ -1718,7 +1718,7 @@ function getAddMinutesQuery(field, minutes) {
     }
 }
 function getDayDiffQuery(field1, field2) {
-    const db = (0,lib_db__WEBPACK_IMPORTED_MODULE_2__/* .getDatabaseType */ .Tk)(process.env.DATABASE_URL);
+    const db = (0,lib_db__WEBPACK_IMPORTED_MODULE_2__/* .getDatabaseType */ .Tk)(process.env.POSTGRESQL_ADDON_URI);
     if (db === lib_db__WEBPACK_IMPORTED_MODULE_2__/* .POSTGRESQL */ .PQ) {
         return `${field1}::date - ${field2}::date`;
     }
@@ -1727,7 +1727,7 @@ function getDayDiffQuery(field1, field2) {
     }
 }
 function getCastColumnQuery(field, type) {
-    const db = (0,lib_db__WEBPACK_IMPORTED_MODULE_2__/* .getDatabaseType */ .Tk)(process.env.DATABASE_URL);
+    const db = (0,lib_db__WEBPACK_IMPORTED_MODULE_2__/* .getDatabaseType */ .Tk)(process.env.POSTGRESQL_ADDON_URI);
     if (db === lib_db__WEBPACK_IMPORTED_MODULE_2__/* .POSTGRESQL */ .PQ) {
         return `${field}::${type}`;
     }

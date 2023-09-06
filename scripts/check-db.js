@@ -10,7 +10,7 @@ if (process.env.SKIP_DB_CHECK) {
   process.exit(0);
 }
 
-function getDatabaseType(url = process.env.DATABASE_URL) {
+function getDatabaseType(url = process.env.POSTGRESQL_ADDON_URI) {
   const type = url && url.split(':')[0];
 
   if (type === 'postgres') {
@@ -31,10 +31,10 @@ function error(msg) {
 }
 
 async function checkEnv() {
-  if (!process.env.DATABASE_URL) {
-    throw new Error('DATABASE_URL is not defined.');
+  if (!process.env.POSTGRESQL_ADDON_URI) {
+    throw new Error('POSTGRESQL_ADDON_URI is not defined.');
   } else {
-    success('DATABASE_URL is defined.');
+    success('POSTGRESQL_ADDON_URI is defined.');
   }
 }
 

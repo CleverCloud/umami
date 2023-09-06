@@ -24,7 +24,7 @@ const POSTGRESQL_DATE_FORMATS = {
 };
 
 function getAddMinutesQuery(field: string, minutes: number): string {
-  const db = getDatabaseType(process.env.DATABASE_URL);
+  const db = getDatabaseType(process.env.POSTGRESQL_ADDON_URI);
 
   if (db === POSTGRESQL) {
     return `${field} + interval '${minutes} minute'`;
@@ -36,7 +36,7 @@ function getAddMinutesQuery(field: string, minutes: number): string {
 }
 
 function getDayDiffQuery(field1: string, field2: string): string {
-  const db = getDatabaseType(process.env.DATABASE_URL);
+  const db = getDatabaseType(process.env.POSTGRESQL_ADDON_URI);
 
   if (db === POSTGRESQL) {
     return `${field1}::date - ${field2}::date`;
@@ -48,7 +48,7 @@ function getDayDiffQuery(field1: string, field2: string): string {
 }
 
 function getCastColumnQuery(field: string, type: string): string {
-  const db = getDatabaseType(process.env.DATABASE_URL);
+  const db = getDatabaseType(process.env.POSTGRESQL_ADDON_URI);
 
   if (db === POSTGRESQL) {
     return `${field}::${type}`;

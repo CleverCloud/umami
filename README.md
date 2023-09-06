@@ -32,7 +32,7 @@ yarn install
 Create an `.env` file with the following
 
 ```
-DATABASE_URL=connection-url
+POSTGRESQL_ADDON_URI=connection-url
 ```
 
 The connection url is in the following format:

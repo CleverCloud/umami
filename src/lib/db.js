@@ -10,7 +10,7 @@ BigInt.prototype.toJSON = function () {
   return Number(this);
 };
 
-export function getDatabaseType(url = process.env.DATABASE_URL) {
+export function getDatabaseType(url = process.env.POSTGRESQL_ADDON_URI) {
   const type = url && url.split(':')[0];
 
   if (type === 'postgres') {
@@ -21,7 +21,7 @@ export function getDatabaseType(url = process.env.DATABASE_URL) {
 }
 
 export async function runQuery(queries) {
-  const db = getDatabaseType(process.env.CLICKHOUSE_URL || process.env.DATABASE_URL);
+  const db = getDatabaseType(process.env.CLICKHOUSE_URL || process.env.POSTGRESQL_ADDON_URI);
 
   if (db === POSTGRESQL || db === MYSQL) {
     return queries[PRISMA]();
