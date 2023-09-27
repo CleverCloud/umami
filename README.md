@@ -65,7 +65,7 @@ or change the [port](https://nextjs.org/docs/api-reference/cli#production) to se
 
 ## Deploy Umami on
 
-![Clever Cloud](src/assets/clever-cloud-logo.png)
+![Clever Cloud](https://cellar-c2.services.clever-cloud.com/precious-jpegs/clever-cloud-logo.png)
 
 Clone this repository and follow this easy procedure.
 
