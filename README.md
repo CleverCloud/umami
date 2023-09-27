@@ -59,7 +59,7 @@ The build step will also create tables in your database if you ae installing for
 yarn start
 ```
 
-By default this will launch the application on `http://localhost:3000`. You will need to either
+By default this will launch the application on `http://localhost:8080`. You will need to either
 [proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/) requests from your web server
 or change the [port](https://nextjs.org/docs/api-reference/cli#production) to serve the application directly.
 
@@ -70,6 +70,8 @@ or change the [port](https://nextjs.org/docs/api-reference/cli#production) to se
 Clone this repository and follow this easy procedure.
 
 ### 1. Set up the remote database
+
+💡 _Skip this step if you've already done it_
 
 Create a PostgreSQL add-on on Clever Cloud and add `POSTGRESQL_ADDON_URI` value in your local `.env` file.
 
