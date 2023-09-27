@@ -11,7 +11,7 @@ A detailed getting started guide can be found at [https://umami.is/docs/](https:
 ### Requirements
 
 - A server with Node.js version 16.13 or newer
-- A database. Umami supports [MySQL](https://www.mysql.com/) and [Postgresql](https://www.postgresql.org/) databases.
+- A database. Umami supports [MySQL](https://www.mysql.com/) and [Postgresql](https://www.postgresql.org/) databases. To deploy on Clever Cloud, we will be using a PostgreSQL add-on.
 
 ### Install Yarn
 
@@ -29,7 +29,7 @@ yarn install
 
 ### Configure umami
 
-Create an `.env` file with the following
+Create an `.env` file with the following environment variable:
 
 ```
 POSTGRESQL_ADDON_URI=connection-url
@@ -42,6 +42,8 @@ postgresql://username:mypassword@localhost:5432/mydb
 
 mysql://username:mypassword@localhost:3306/mydb
 ```
+
+💡 For a smoother workflow, you can already create a PostgreSQL add-on on Clever Cloud and use the `POSTGRESQL_ADDON_URI` value provided from your add-on dashboard (see **Information**).
 
 ### Build the application
 
@@ -92,10 +94,6 @@ Comment in your `.gitignore` the following files :
 
 Give them permissions with: (not sure if this is necessary?)
 
-```bash
-chmod -R +rwx .next out prisma
-```
-
 Then add them and commit them:
 
 ```bash
@@ -115,9 +113,9 @@ CC_WEBROOT="/.next"
 NODE_ENV="production"
 ```
 
-Don't deploy yet! Go to **Service dependencies** and connect your PostgreSQL addon.
+Add the new `clever` remote but don't deploy yet! Go to **Service dependencies** and connect your PostgreSQL addon first.
 
-After that, go to **Information** and add the new git remote. 🚀 Now you can deploy your app!
+After that, go to **Information** and add the new git remote. 🚀 Now you can deploy your app with `git push clever main:master`!
 
 ## Getting updates
 
