@@ -61,25 +61,63 @@ By default this will launch the application on `http://localhost:3000`. You will
 [proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/) requests from your web server
 or change the [port](https://nextjs.org/docs/api-reference/cli#production) to serve the application directly.
 
-## Installing with Docker
+## Deploy Umami on
 
-To build the umami container and start up a Postgres database, run:
+![Clever Cloud](src/assets/clever-cloud-logo.png)
 
-```bash
-docker compose up -d
-```
+Clone this repository and follow this easy procedure.
 
-Alternatively, to pull just the Umami Docker image with PostgreSQL support:
+### 1. Set up the remote database
 
-```bash
-docker pull docker.umami.dev/umami-software/umami:postgresql-latest
-```
+Create a PostgreSQL add-on on Clever Cloud and add `POSTGRESQL_ADDON_URI` value in your local `.env` file.
 
-Or with MySQL support:
+### 2. Build the app locally
+
+This step should only be necessary on first deployment.
 
 ```bash
-docker pull docker.umami.dev/umami-software/umami:mysql-latest
+yarn install
+yarn build
 ```
+
+### 3. Commit your build repositories
+
+Comment in your `.gitignore` the following files : 
+
+```
+#/.next/
+#/out/
+#/prisma/
+```
+
+Give them permissions with: (not sure if this is necessary?)
+
+```bash
+chmod -R +rwx .next out prisma
+```
+
+Then add them and commit them:
+
+```bash
+git add .
+git commit -m "first deployment"
+```
+
+### 4. Declare a Node.JS app
+
+Create a new app on Clever Cloud, choose to deploy with Git and select a Node.JS runtime.
+
+Then add the following environment variables:
+
+```
+CC_CUSTOM_BUILD_TOOL="yarn"
+CC_WEBROOT="/.next"
+NODE_ENV="production"
+```
+
+Don't deploy yet! Go to **Service dependencies** and connect your PostgreSQL addon.
+
+After that, go to **Information** and add the new git remote. 🚀 Now you can deploy your app!
 
 ## Getting updates
 
