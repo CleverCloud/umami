@@ -92,6 +92,8 @@ Comment in your `.gitignore` the following files :
 #/.next/
 #/out/
 #/prisma/
+
+#/public/script.js
 ```
 
 Give them permissions with: (not sure if this is necessary?)
