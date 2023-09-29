@@ -1,6 +1,6 @@
 # umami
 
-Umami is a simple, fast, privacy-focused alternative to Google Analytics.
+Umami is a simple, fast, privacy-focused alternative to Google Analytics. This version is a fork by Clever Cloud.
 
 ## Getting started
 
